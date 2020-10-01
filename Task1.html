@@ -1,0 +1,168 @@
+<html> 
+<head> 
+<script> 
+function Books()								 
+{ 
+	var name = document.forms["BookForm"]["Author name"];			 
+	var email = document.forms["BookForm"]["Author EMail"]; 
+	var website = document.forms["BookForm"]["Website"]; 
+	var pic = document.forms["BookForm"]["Cover pic"]; 
+	var categories = document.forms["BookForm"]["Categories"]; 
+	var date = document.forms["BookForm"]["Date Of Publication"]; 
+    var isbn = document.forms["BookForm"]["ISBN Number"]; 
+    var price = document.forms["BookForm"]["Price"]; 
+    var type = document.forms["BookForm"]["Type"]; 
+    var format = document.forms["BookForm"]["Format"]; 
+    var instock = document.forms["BookForm"]["In Stock"]; 
+    var review = document.forms["BookForm"]["Review"]; 
+
+	if (name.value == "")								 
+	{ 
+		window.alert("Please enter your name."); 
+		name.focus(); 
+		return false; 
+	} 
+	
+	if (email.value == "")								 
+	{ 
+		window.alert("Please enter a valid e-mail address."); 
+		email.focus(); 
+		return false; 
+	} 
+
+    if (website.value == "")								 
+	{ 
+		window.alert("Please enter the website."); 
+		website.focus(); 
+		return false; 
+	} 
+
+	if (pic.value == "")						 
+	{ 
+		window.alert("Please select a cover pic."); 
+		pic.focus(); 
+		return false; 
+	} 
+
+	if (categories.selectedIndex < 1)				 
+	{ 
+		alert("Please enter your category."); 
+		categories.focus(); 
+		return false; 
+	} 
+
+    if (date.value == "")								 
+	{ 
+		window.alert("Please enter the date of publication."); 
+		date.focus(); 
+		return false; 
+	} 
+
+    if (isbn.value == "" & isbn.value != "^d{3}-d{1}-d{5}-d{1}-d{3}$")								 
+	{ 
+		window.alert("Please enter valid ISBN number with format as 000-0-00000-0-000."); 
+		isbn.focus(); 
+		return false; 
+	} 
+
+    if (price.value == "")								 
+	{ 
+		window.alert("Please enter the book's price."); 
+		price.focus(); 
+		return false; 
+	} 
+
+    if (type.value == "")								 
+	{ 
+		window.alert("Please enter the type."); 
+		type.focus(); 
+		return false; 
+	} 
+
+    if (format.value == "")								 
+	{ 
+		window.alert("Please enter the format."); 
+		format.focus(); 
+		return false; 
+	} 
+
+    if (instock.selectedIndex < 1)								 
+	{ 
+		window.alert("Please mention availaiblity."); 
+		instock.focus(); 
+		return false; 
+	} 
+
+    if (review.value == "")								 
+	{ 
+		window.alert("Please enter your review."); 
+		review.focus(); 
+		return false; 
+	} 
+
+	return true; 
+}</script> 
+
+<style> 
+Books {										 
+	margin-left: 70px; 
+	font-weight: bold ; 
+	float: left; 
+	clear: left; 
+	width: 100px; 
+	text-align: left; 
+	margin-right: 10px; 
+	font-family:sans-serif,bold, Arial, Helvetica; 
+	font-size:14px; 
+} 
+
+div { 
+	box-sizing: border-box; 
+	width: 100%; 
+	border: 100px solid black; 
+	float: left; 
+	align-content: center; 
+	align-items: center; 
+} 
+
+form {										 
+	margin: 0 auto; 
+	width: 600px; 
+}</style></head> 
+
+<body> 
+<h1 style="text-align: center"> Book Details </h1>		 
+<form name="BookForm" action="/submit.php" onsubmit="return Books()" method="post"> 
+	
+	<p>Author Name: <input type="text" size=65 name="Author name"> </p><br>	 
+	<p>Author E-mail: <input type="email" size=65 name="Author EMail"> </p><br> 
+    <p>Website: <input type="url" size=65 name="Website"> </p><br> 
+    <p>Cover pic: <input type="file" id="img" name="Cover pic" accept="image/*"></p> 
+    <p><strong>Note:</strong> Size should not be more than 2mb.</p><br> 
+		
+	<p>Categories 
+		<select type="text" value="" name="Categories"> 
+			<option>Drama</option> 
+			<option>Thriller</option> 
+			<option>Action</option> 
+			<option>Romance</option> 
+			<option>Fiction</option> 
+        </select></p><br><br> 
+
+    <p>Date Of Publication: <input type="date" pattern="\d{2, 1}/\d{2, 1}/\d{4}" size=65 name="Date Of Publication"> </p><br>
+    <p>ISBN Number<input type="number" id="ISBN" pattern="^d{3}-d{1}-d{5}-d{1}-d{3}$" name="ISBN Number"></p><br>
+    <p>Price: <input type="number" size=10 name="Price"> </p><br>
+    <p>Type: <input type="text" size=65 name="Type"> </p><br>
+    <p>Format: <input type="text" size=65 name="Format"> </p><br>
+    <p>In Stock 
+		<select type="text" value="" name="In Stock"> 
+			<option>Available</option> 
+			<option>Out of Stock</option> 
+        </select></p><br><br> 
+	<p>Review: <textarea cols="100" name="Review"> </textarea></p> 
+	<p><input type="submit" value="Preview" name="Submit">
+	</p>		 
+</form> 
+</body> 
+</html> 
+
